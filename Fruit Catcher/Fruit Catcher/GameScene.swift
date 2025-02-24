@@ -1,109 +1,82 @@
-//
-//  GameScene.swift
-//  Fruit Catcher
-//
-//  Created by 劉丞晏 on 2025/2/24.
-//
-
 import SpriteKit
-import GameplayKit
+import SwiftUI
 
 class GameScene: SKScene {
+    var basket: SKSpriteNode! // 籃子
+    var missedFruits = 0
+    var score = 0
+    var scoreLabel: SKLabelNode!
     
-    var entities = [GKEntity]()
-    var graphs = [String : GKGraph]()
-    
-    private var lastUpdateTime : TimeInterval = 0
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    
-    override func sceneDidLoad() {
-
-        self.lastUpdateTime = 0
+    override func didMove(to view: SKView) {
+        self.backgroundColor = SKColor.cyan
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
+        // 設定籃子
+        basket = SKSpriteNode(color: SKColor.brown, size: CGSize(width: 100, height: 50))
+        basket.position = CGPoint(x: self.frame.midX, y: self.frame.minY + 100)
+        addChild(basket)
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
+        // 分數標籤
+        scoreLabel = SKLabelNode(fontNamed: "Arial")
+        scoreLabel.fontSize = 24
+        scoreLabel.fontColor = SKColor.black
+        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - 50)
+        scoreLabel.text = "Score: \(score)"
+        addChild(scoreLabel)
         
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        // 讓水果掉落
+        let spawnAction = SKAction.run(spawnFruit)
+        let waitAction = SKAction.wait(forDuration: 1.0)
+        let sequence = SKAction.sequence([spawnAction, waitAction])
+        run(SKAction.repeatForever(sequence))
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            basket.position.x = location.x
+        }
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+    func spawnFruit() {
+        let fruit = SKSpriteNode(color: SKColor.red, size: CGSize(width: 40, height: 40))
+        let randomX = CGFloat.random(in: self.frame.minX...self.frame.maxX)
+        fruit.position = CGPoint(x: randomX, y: self.frame.maxY)
+        fruit.name = "fruit"
+        
+        addChild(fruit)
+        
+        let moveAction = SKAction.moveTo(y: self.frame.minY, duration: 3.0)
+        let removeAction = SKAction.run {
+            if fruit.parent != nil {
+                fruit.removeFromParent()
+                self.missedFruits += 1
+                if self.missedFruits >= 3 {
+                    self.gameOver()
+                }
+            }
+        }
+        fruit.run(SKAction.sequence([moveAction, removeAction]))
     }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        
-        // Initialize _lastUpdateTime if it has not already been
-        if (self.lastUpdateTime == 0) {
-            self.lastUpdateTime = currentTime
+        for node in children {
+            if let fruit = node as? SKSpriteNode, fruit.name == "fruit" {
+                if fruit.frame.intersects(basket.frame) {
+                    fruit.removeFromParent()
+                    score += 1
+                    scoreLabel.text = "Score: \(score)"
+                }
+            }
         }
-        
-        // Calculate time since last update
-        let dt = currentTime - self.lastUpdateTime
-        
-        // Update entities
-        for entity in self.entities {
-            entity.update(deltaTime: dt)
-        }
-        
-        self.lastUpdateTime = currentTime
+    }
+    
+    func gameOver() {
+        print("遊戲結束！")
+        self.isPaused = true
+        let gameOverLabel = SKLabelNode(text: "Game Over")
+        gameOverLabel.fontSize = 40
+        gameOverLabel.fontColor = SKColor.red
+        gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        addChild(gameOverLabel)
     }
 }
