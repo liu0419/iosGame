@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		7CD996A22D6811AA004CF736 /* iosClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CFE473B2D6CA90500B6C1FA /* Fruit Catcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fruit Catcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7CD996A42D6811AA004CF736 /* iosClass */ = {
+		7CFE473D2D6CA90500B6C1FA /* Fruit Catcher */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = iosClass;
+			path = "Fruit Catcher";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7CD9969F2D6811AA004CF736 /* Frameworks */ = {
+		7CFE47382D6CA90500B6C1FA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7CD996992D6811AA004CF736 = {
+		7CFE47322D6CA90400B6C1FA = {
 			isa = PBXGroup;
 			children = (
-				7CD996A42D6811AA004CF736 /* iosClass */,
-				7CD996A32D6811AA004CF736 /* Products */,
+				7CFE473D2D6CA90500B6C1FA /* Fruit Catcher */,
+				7CFE473C2D6CA90500B6C1FA /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		7CD996A32D6811AA004CF736 /* Products */ = {
+		7CFE473C2D6CA90500B6C1FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7CD996A22D6811AA004CF736 /* iosClass.app */,
+				7CFE473B2D6CA90500B6C1FA /* Fruit Catcher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7CD996A12D6811AA004CF736 /* iosClass */ = {
+		7CFE473A2D6CA90500B6C1FA /* Fruit Catcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CD996B02D6811AD004CF736 /* Build configuration list for PBXNativeTarget "iosClass" */;
+			buildConfigurationList = 7CFE47522D6CA90F00B6C1FA /* Build configuration list for PBXNativeTarget "Fruit Catcher" */;
 			buildPhases = (
-				7CD9969E2D6811AA004CF736 /* Sources */,
-				7CD9969F2D6811AA004CF736 /* Frameworks */,
-				7CD996A02D6811AA004CF736 /* Resources */,
+				7CFE47372D6CA90500B6C1FA /* Sources */,
+				7CFE47382D6CA90500B6C1FA /* Frameworks */,
+				7CFE47392D6CA90500B6C1FA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				7CD996A42D6811AA004CF736 /* iosClass */,
+				7CFE473D2D6CA90500B6C1FA /* Fruit Catcher */,
 			);
-			name = iosClass;
+			name = "Fruit Catcher";
 			packageProductDependencies = (
 			);
-			productName = iosClass;
-			productReference = 7CD996A22D6811AA004CF736 /* iosClass.app */;
+			productName = "Fruit Catcher";
+			productReference = 7CFE473B2D6CA90500B6C1FA /* Fruit Catcher.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7CD9969A2D6811AA004CF736 /* Project object */ = {
+		7CFE47332D6CA90400B6C1FA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					7CD996A12D6811AA004CF736 = {
+					7CFE473A2D6CA90500B6C1FA = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = 7CD9969D2D6811AA004CF736 /* Build configuration list for PBXProject "iosClass" */;
+			buildConfigurationList = 7CFE47362D6CA90400B6C1FA /* Build configuration list for PBXProject "Fruit Catcher" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 7CD996992D6811AA004CF736;
+			mainGroup = 7CFE47322D6CA90400B6C1FA;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 7CD996A32D6811AA004CF736 /* Products */;
+			productRefGroup = 7CFE473C2D6CA90500B6C1FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7CD996A12D6811AA004CF736 /* iosClass */,
+				7CFE473A2D6CA90500B6C1FA /* Fruit Catcher */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7CD996A02D6811AA004CF736 /* Resources */ = {
+		7CFE47392D6CA90500B6C1FA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7CD9969E2D6811AA004CF736 /* Sources */ = {
+		7CFE47372D6CA90500B6C1FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		7CD996AE2D6811AD004CF736 /* Debug */ = {
+		7CFE47502D6CA90F00B6C1FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -188,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		7CD996AF2D6811AD004CF736 /* Release */ = {
+		7CFE47512D6CA90F00B6C1FA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -244,20 +244,19 @@
 			};
 			name = Release;
 		};
-		7CD996B12D6811AD004CF736 /* Debug */ = {
+		7CFE47532D6CA90F00B6C1FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iosClass/Preview Content\"";
 				DEVELOPMENT_TEAM = 2DJ2LC3PTM;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -265,7 +264,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = name.Hank.iosClass;
+				PRODUCT_BUNDLE_IDENTIFIER = "name.Hank.Fruit-Catcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -273,20 +272,19 @@
 			};
 			name = Debug;
 		};
-		7CD996B22D6811AD004CF736 /* Release */ = {
+		7CFE47542D6CA90F00B6C1FA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iosClass/Preview Content\"";
 				DEVELOPMENT_TEAM = 2DJ2LC3PTM;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -294,7 +292,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = name.Hank.iosClass;
+				PRODUCT_BUNDLE_IDENTIFIER = "name.Hank.Fruit-Catcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -305,25 +303,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7CD9969D2D6811AA004CF736 /* Build configuration list for PBXProject "iosClass" */ = {
+		7CFE47362D6CA90400B6C1FA /* Build configuration list for PBXProject "Fruit Catcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7CD996AE2D6811AD004CF736 /* Debug */,
-				7CD996AF2D6811AD004CF736 /* Release */,
+				7CFE47502D6CA90F00B6C1FA /* Debug */,
+				7CFE47512D6CA90F00B6C1FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CD996B02D6811AD004CF736 /* Build configuration list for PBXNativeTarget "iosClass" */ = {
+		7CFE47522D6CA90F00B6C1FA /* Build configuration list for PBXNativeTarget "Fruit Catcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7CD996B12D6811AD004CF736 /* Debug */,
-				7CD996B22D6811AD004CF736 /* Release */,
+				7CFE47532D6CA90F00B6C1FA /* Debug */,
+				7CFE47542D6CA90F00B6C1FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7CD9969A2D6811AA004CF736 /* Project object */;
+	rootObject = 7CFE47332D6CA90400B6C1FA /* Project object */;
 }
