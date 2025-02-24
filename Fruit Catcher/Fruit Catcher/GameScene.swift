@@ -71,7 +71,7 @@ class GameScene: SKScene {
     }
     
     func gameOver() {
-        print("遊戲結束！")
+        print("遊戲結束！!")
         self.isPaused = true
         let gameOverLabel = SKLabelNode(text: "Game Over")
         gameOverLabel.fontSize = 40
@@ -80,3 +80,4 @@ class GameScene: SKScene {
         addChild(gameOverLabel)
     }
 }
+
