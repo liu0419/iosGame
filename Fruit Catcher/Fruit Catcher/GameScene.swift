@@ -1,13 +1,17 @@
 import SpriteKit
 import SwiftUI
+import AVFoundation
+var backgroundMusicPlayer: AVAudioPlayer? // 🎵 背景音樂播放器
 
 class GameScene: SKScene {
     var basket: SKSpriteNode! // 籃子
     var missedFruits = 0
     var score = 0
-    var scoreLabel: SKLabelNode!
+  
     
     override func didMove(to view: SKView) {
+        // 播放背景音樂
+                playBackgroundMusic(filename: "bgMusic.mp3") // 🎵 確保 "bgMusic.mp3" 已加入專案
         // 加入背景
         let background = SKSpriteNode(imageNamed: "bg") // 確保名稱與 Assets.xcassets 一致
         background.anchorPoint = CGPoint(x: 0, y: 0) // 設定中心點
@@ -25,13 +29,7 @@ class GameScene: SKScene {
         basket.zPosition = 1 // 確保籃子在前景
         addChild(basket)
         
-        // 分數標籤
-        scoreLabel = SKLabelNode(fontNamed: "Arial")
-        scoreLabel.fontSize = 24
-        scoreLabel.fontColor = SKColor.black
-        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - 50)
-        scoreLabel.text = "Score: \(score)"
-        addChild(scoreLabel)
+        
         
         // 讓水果掉落
         let spawnAction = SKAction.run(spawnFruit)
@@ -40,12 +38,15 @@ class GameScene: SKScene {
         run(SKAction.repeatForever(sequence))
     }
     
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.location(in: self)
             basket.position.x = location.x
         }
     }
+   
+
     
     func spawnFruit() {
         let fruit = SKSpriteNode(imageNamed:"apple")
@@ -56,17 +57,21 @@ class GameScene: SKScene {
         
         addChild(fruit)
         
-        let moveAction = SKAction.moveTo(y: self.frame.minY, duration: 0.5)
+        let moveAction = SKAction.moveTo(y: self.frame.minY, duration: 1)
         let removeAction = SKAction.run {
             if fruit.parent != nil {
                 fruit.removeFromParent()
                 self.missedFruits += 1
+                // 播放水果掉落音效
+                           self.run(SKAction.playSoundFileNamed("pickup02.mp3", waitForCompletion: false))
+
                 if self.missedFruits >= 3 {
                     self.gameOver()
                 }
             }
         }
         fruit.run(SKAction.sequence([moveAction, removeAction]))
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -74,12 +79,29 @@ class GameScene: SKScene {
             if let fruit = node as? SKSpriteNode, fruit.name == "fruit" {
                 if fruit.frame.intersects(basket.frame) {
                     fruit.removeFromParent()
-                    score += 1
-                    scoreLabel.text = "Score: \(score)"
+                    // 播放音效（確保音檔已加入 Xcode 專案）
+                                   run(SKAction.playSoundFileNamed("poka03.mp3", waitForCompletion: false))
                 }
             }
         }
     }
+    // 🎵 背景音樂播放函數
+        func playBackgroundMusic(filename: String) {
+            guard let url = Bundle.main.url(forResource: filename, withExtension: nil) else {
+                print("❌ 找不到背景音樂: \(filename)")
+                return
+            }
+
+            do {
+                backgroundMusicPlayer = try AVAudioPlayer(contentsOf: url)
+                backgroundMusicPlayer?.numberOfLoops = -1 // 🎵 無限循環播放
+                backgroundMusicPlayer?.volume = 0.5 // 🔊 音量調整 (0.0 ~ 1.0)
+                backgroundMusicPlayer?.prepareToPlay()
+                backgroundMusicPlayer?.play()
+            } catch {
+                print("❌ 背景音樂播放錯誤: \(error)")
+            }
+        }
     
     func gameOver() {
         print("遊戲結束！!")
