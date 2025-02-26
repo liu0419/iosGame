@@ -8,11 +8,21 @@ class GameScene: SKScene {
     var scoreLabel: SKLabelNode!
     
     override func didMove(to view: SKView) {
-        self.backgroundColor = SKColor.cyan
+        // 加入背景
+        let background = SKSpriteNode(imageNamed: "bg") // 確保名稱與 Assets.xcassets 一致
+        background.anchorPoint = CGPoint(x: 0, y: 0) // 設定中心點
+        background.position = CGPoint(x: self.frame.midX, y: self.frame.midY) // 置中
+        background.xScale = 3 // **只拉伸寬度**
+        background.yScale = 3.5 // **保持原始高度**
+
+        background.zPosition = -1 // 確保背景在最底層
+        addChild(background)
         
         // 設定籃子
-        basket = SKSpriteNode(color: SKColor.brown, size: CGSize(width: 100, height: 50))
+        basket = SKSpriteNode(imageNamed: "cute") // 替換成你的圖片名稱（不需要副檔名）
+        basket.size = CGSize(width: 100, height: 100) // 設定大小，根據圖片調整
         basket.position = CGPoint(x: self.frame.midX, y: self.frame.minY + 100)
+        basket.zPosition = 1 // 確保籃子在前景
         addChild(basket)
         
         // 分數標籤
@@ -38,14 +48,15 @@ class GameScene: SKScene {
     }
     
     func spawnFruit() {
-        let fruit = SKSpriteNode(color: SKColor.red, size: CGSize(width: 40, height: 40))
+        let fruit = SKSpriteNode(imageNamed:"apple")
+        fruit.size = CGSize(width:50, height: 50)
         let randomX = CGFloat.random(in: self.frame.minX...self.frame.maxX)
         fruit.position = CGPoint(x: randomX, y: self.frame.maxY)
         fruit.name = "fruit"
         
         addChild(fruit)
         
-        let moveAction = SKAction.moveTo(y: self.frame.minY, duration: 3.0)
+        let moveAction = SKAction.moveTo(y: self.frame.minY, duration: 0.5)
         let removeAction = SKAction.run {
             if fruit.parent != nil {
                 fruit.removeFromParent()
@@ -81,3 +92,8 @@ class GameScene: SKScene {
     }
 }
 
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

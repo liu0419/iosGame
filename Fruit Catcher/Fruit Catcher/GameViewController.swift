@@ -1,22 +1,16 @@
-import UIKit
+import SwiftUI
 import SpriteKit
 
-class GameViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let view = self.view as! SKView? {
-            let scene = GameScene(size: view.bounds.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene)
-            
-            view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+struct GameView: UIViewRepresentable {
+    func makeUIView(context: Context) -> SKView {
+        let skView = SKView()
+        let scene = GameScene(size: UIScreen.main.bounds.size)
+        scene.scaleMode = .resizeFill
+        skView.presentScene(scene)
+        return skView
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
+    func updateUIView(_ uiView: SKView, context: Context) {
+        // 可以在這裡處理更新邏輯
     }
 }
